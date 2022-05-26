@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Перечень товаров</title>
+    <style> 
+    *{
+      background-color: #e5e5e5;
+      margin: 2% 7%;
+    }
+    a:last-of-type{
+      margin-left: 70%
+    }
+    </style>
+  </head>
+  <body>
+    <a href="restoration_filtrated">Отфильтровать</a>
+    <a href="restoration_ordered">Отсортировать</a>
+    <form method="POST">
+      {% csrf_token %}
+      <table>
+        {{ form }}
+      </table>
+      <input type="submit" value="Send" />
+    </form>
+    <h2>Перечень товаров</h2>
+    {% for restoration in restorations %}
+    <h3>{{restoration.name}}</h1>
+    {% endfor %}
+    <br>
+    <a href="/">На главную</a>
+  </body>
+</html>

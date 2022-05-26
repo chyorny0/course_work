@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Перечень товаров</title>
+    <style> 
+    *{
+      background-color: #e5e5e5;
+      margin: 2% 7%;
+    }
+    a:last-of-type{
+      margin-left: 70%
+    }
+    </style>
+  </head>
+  <body>
+    <h2>{{A}}</h2>
+    <a href="car_filtrated">Отфильтровать</a>
+    <a href="car_ordered">Отсортировать</a>
+    <a href="car_create">Создать новую запись о машине</a>
+    <form method="POST">
+      {% csrf_token %}
+      <table>
+        {{ form }}
+      </table>
+      <input type="submit" value="Send" />
+    </form>
+    <h3>{{search}}</h3>
+    <h2>Перечень товаров</h2>
+    {% for car in cars %}
+    <h3>{{car.name}}</h3>
+    <h3>{{search}}</h3>
+    {% endfor %}
+    <a href="/">На главную</a>
+  </body>
+</html>

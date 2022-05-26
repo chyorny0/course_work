@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Регистрация</title>
+    <style>
+      form {
+        
+        display: flex;
+      }
+    </style>
+  </head>
+  <body>
+    <form method="POST">
+      {% csrf_token %}
+      <table>
+        <select name="i0j1">
+          <option value="1">1</option>
+          <option value="0" selected>0</option>
+        </select>
+        <select name="i0j2">
+          <option value="1">1</option>
+          <option value="0" selected>0</option>
+        </select>
+        <select name="i0j3">
+          <option value="1">1</option>
+          <option value="0" selected>0</option>
+        </select>
+        <select name="i1j0">
+          <option value="1">1</option>
+          <option value="0" selected>0</option>
+        </select>
+        <select name="i1j2">
+          <option value="1">1</option>
+          <option value="0" selected>0</option>
+        </select>
+        <select name="i1j3">
+          <option value="1">1</option>
+          <option value="0" selected>0</option>
+        </select>
+        <select name="i2j0">
+          <option value="1">1</option>
+          <option value="0" selected>0</option>
+        </select>
+        <select name="i2j1">
+          <option value="1">1</option>
+          <option value="0" selected>0</option>
+        </select>
+        <select name="i2j3">
+          <option value="1">1</option>
+          <option value="0" selected>0</option>
+        </select>
+        <select name="i3j0">
+          <option value="1">1</option>
+          <option value="0" selected>0</option>
+        </select>
+        <select name="i3j1">
+          <option value="1">1</option>
+          <option value="0" selected>0</option>
+        </select>
+        <select name="i3j2">
+          <option value="1">1</option>
+          <option value="0" selected>0</option>
+        </select>
+      </table>
+      <input type="submit" value="Send" />
+    </form>
+  </body>
+</html>

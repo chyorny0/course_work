@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Регистрация</title>
+    <style> 
+    *{      
+        background-color: #e5e5e5;
+        margin: 2% 12%;
+    }
+    a{
+        margin-left: 46.5%
+    }
+    </style>
+</head>
+<body>
+    <form method="POST">
+        {% csrf_token %}
+        <table>
+            {{ form }}
+        </table>
+        <input type="submit" value="Send" >
+    </form>
+    <a href="/">На главную</a>
+</body>
+</html>
