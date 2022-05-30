@@ -2,11 +2,10 @@ import json
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.models import User, auth
-from .models import Car, Restoration, Range
+from .models import Car, Restoration, Range, RangeVoteAdd
 from .forms import CarForm, RegisterForm, LoginForm, SearchForm
 
 
-# Create your views here.
 
 A = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
 
@@ -17,8 +16,6 @@ def index(request):
     return render(request, 'index.html')
 
 
-
-#Register/Login
 
 
 def register(request):
@@ -89,22 +86,22 @@ def car(request):
     return render(request, 'car.html', context=data)
 
 def car_ordered(request):
-    cars = Car.objects.order_by()
+    cars = Car.objects.order_by('name')
     data = {"cars": cars}
     return render(request, 'car.html', context=data)
 
 def restoration_ordered(request):
-    restorations = Restoration.objects.order_by()
+    restorations = Restoration.objects.order_by('name')
     data = {"restorations": restorations}
     return render(request, 'restoration.html', context=data)
 
 def car_filtrated(request):
-    cars = Car.objects.filter(price__lte = 100)
+    cars = Car.objects.filter(price__lte = 8000)
     data = {"cars": cars}
     return render(request, 'car.html', context=data)
 
 def restoration_filtrated(request):
-    restorations = Restoration.objects.filter(total_price__lte = 100)
+    restorations = Restoration.objects.filter(total_price__lte = 5000)
     data = {"restorations": restorations}
     return render(request, 'restoration.html', context=data)
 
@@ -126,18 +123,18 @@ def car_create(request):
 
 def range(request):
     if request.method == 'POST':
-        i0j1 = request.POST['i0j1']
-        i0j2 = request.POST['i0j2']
-        i0j3 = request.POST['i0j3']
-        i1j0 = request.POST['i1j0']
-        i1j2 = request.POST['i1j2']
-        i1j3 = request.POST['i1j3']
-        i2j0 = request.POST['i2j0']
-        i2j1 = request.POST['i2j1']
-        i2j3 = request.POST['i2j3']
-        i3j0 = request.POST['i3j0']
-        i3j1 = request.POST['i3j1']
-        i3j2 = request.POST['i3j2']
+        i0j1 = int(request.POST['i0j1'])
+        i0j2 = int(request.POST['i0j2'])
+        i0j3 = int(request.POST['i0j3'])
+        i1j0 = int(request.POST['i1j0'])
+        i1j2 = int(request.POST['i1j2'])
+        i1j3 = int(request.POST['i1j3'])
+        i2j0 = int(request.POST['i2j0'])
+        i2j1 = int(request.POST['i2j1'])
+        i2j3 = int(request.POST['i2j3'])
+        i3j0 = int(request.POST['i3j0'])
+        i3j1 = int(request.POST['i3j1'])
+        i3j2 = int(request.POST['i3j2'])
         if i0j1 == 1:
             A[0][1] +=1
         if i0j2 == 1:
@@ -164,7 +161,8 @@ def range(request):
             A[3][2] +=1
         return redirect('/')
     else:
-        return render(request, 'range.html')
+        restorations = RangeVoteAdd.objects.all().reverse()[0]
+        return render(request, 'range.html', {"restorations":restorations})
 
 def rangeresult(request):
     result1 = A[0][1] + A[0][2] + A[0][3]
@@ -172,16 +170,21 @@ def rangeresult(request):
     result3 = A[2][0] + A[2][1] + A[2][3]
     result4 = A[3][0] + A[3][1] + A[3][2]
     Range.objects.all().delete()
-    rangeresult = Range.objects.create(result=result1)
+    resultnumber = 1
+    rangeresult = Range.objects.create(result=result1, resultnumber=resultnumber)
     rangeresult.save()
-    rangeresult = Range.objects.create(result=result2)
+    resultnumber = 2
+    rangeresult = Range.objects.create(result=result2, resultnumber=resultnumber)
     rangeresult.save()
-    rangeresult = Range.objects.create(result=result3)
+    resultnumber = 3
+    rangeresult = Range.objects.create(result=result3, resultnumber=resultnumber)
     rangeresult.save()
-    rangeresult = Range.objects.create(result=result4)
+    resultnumber = 4
+    rangeresult = Range.objects.create(result=result4, resultnumber=resultnumber)
     rangeresult.save()
-    rengeresult =  Range.objects.order_by()
-    data = {"rengeresult": rengeresult,}
+    rengeresult =  Range.objects.order_by('-result')
+    restorations = RangeVoteAdd.objects.all().reverse()[0]
+    data = {"rengeresult": rengeresult, "restorations": restorations}
     return render(request, 'result.html', context=data)
 
 

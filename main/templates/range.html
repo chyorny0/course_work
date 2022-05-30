@@ -2,68 +2,148 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>Регистрация</title>
+    <title>Голосование</title>
     <style>
-      form {
-        
+      * {
+        background-color: #e6e6e6;
+      }
+      div {
+        height: 100px;
         display: flex;
+        margin-left: 39%;
+      }
+      form {
+        width: 20%;
+        display: flex;
+        flex-wrap: wrap;
+      }
+      select {
+        background-color: #dda0dd;
+        width: 25%;
+      }
+      span:first-of-type {
+        margin-left: 43%;
+        white-space: pre;
+      }
+      p {
+        margin-top: -15px;
+        white-space: pre;
+      }
+      input {
+        background-color: #dda0dd;
+        margin-top: 4%;
+        margin-left: 72%;
+      }
+      a {
+        padding: 5px;
+        margin-left: 10%;
+        background-color: #dda0dd;
+        color: black;
+        text-decoration: none;
+        border: 1px solid black;
+        border-radius: 10px;
+      }
+      a:hover {
+        background-color: #ee82ee;
+      }
+      a:active {
+        background-color: #ff00ff;
+      }
+      a:last-of-type {
+        margin-left: 60%;
+      }
+      h3{
+        width: 190px;
+        background-color: #DDA0DD;
+        margin-left: 37%;
+        padding: 0 5%;
+        border-radius: 10px;
       }
     </style>
   </head>
   <body>
-    <form method="POST">
-      {% csrf_token %}
-      <table>
-        <select name="i0j1">
-          <option value="1">1</option>
-          <option value="0" selected>0</option>
-        </select>
-        <select name="i0j2">
-          <option value="1">1</option>
-          <option value="0" selected>0</option>
-        </select>
-        <select name="i0j3">
-          <option value="1">1</option>
-          <option value="0" selected>0</option>
-        </select>
-        <select name="i1j0">
-          <option value="1">1</option>
-          <option value="0" selected>0</option>
-        </select>
-        <select name="i1j2">
-          <option value="1">1</option>
-          <option value="0" selected>0</option>
-        </select>
-        <select name="i1j3">
-          <option value="1">1</option>
-          <option value="0" selected>0</option>
-        </select>
-        <select name="i2j0">
-          <option value="1">1</option>
-          <option value="0" selected>0</option>
-        </select>
-        <select name="i2j1">
-          <option value="1">1</option>
-          <option value="0" selected>0</option>
-        </select>
-        <select name="i2j3">
-          <option value="1">1</option>
-          <option value="0" selected>0</option>
-        </select>
-        <select name="i3j0">
-          <option value="1">1</option>
-          <option value="0" selected>0</option>
-        </select>
-        <select name="i3j1">
-          <option value="1">1</option>
-          <option value="0" selected>0</option>
-        </select>
-        <select name="i3j2">
-          <option value="1">1</option>
-          <option value="0" selected>0</option>
-        </select>
-      </table>
-      <input type="submit" value="Send" />
-    </form>
+    <span>  1         2        3       4</span>
+    <div>
+      <p>
+        1
+        2 
+        3
+        4</p>
+      <form method="POST">
+        {% csrf_token %}
+        <table>
+          <!-- <span>1</span> -->
+          <select name="i0j0">
+            <option selected>-</option>
+          </select>
+          <select name="i0j1">
+            <option value="1">1</option>
+            <option value="0" selected>0</option>
+          </select>
+          <select name="i0j2">
+            <option value="1">1</option>
+            <option value="0" selected>0</option>
+          </select>
+          <select name="i0j3">
+            <option value="1">1</option>
+            <option value="0" selected>0</option>
+          </select>
+          <!-- <span>2</span> -->
+          <select name="i1j0">
+            <option value="1">1</option>
+            <option value="0" selected>0</option>
+          </select>
+          <select name="i1j1">
+            <option selected>-</option>
+          </select>
+          <select name="i1j2">
+            <option value="1">1</option>
+            <option value="0" selected>0</option>
+          </select>
+          <select name="i1j3">
+            <option value="1">1</option>
+            <option value="0" selected>0</option>
+          </select>
+          <!-- <span>3</span> -->
+          <select name="i2j0">
+            <option value="1">1</option>
+            <option value="0" selected>0</option>
+          </select>
+          <select name="i2j1">
+            <option value="1">1</option>
+            <option value="0" selected>0</option>
+          </select>
+          <select name="i2j2">
+            <option selected>-</option>
+          </select>
+          <select name="i2j3">
+            <option value="1">1</option>
+            <option value="0" selected>0</option>
+          </select>
+          <!-- <span>4</span> -->
+          <select name="i3j0">
+            <option value="1">1</option>
+            <option value="0" selected>0</option>
+          </select>
+          <select name="i3j1">
+            <option value="1">1</option>
+            <option value="0" selected>0</option>
+          </select>
+          <select name="i3j2">
+            <option value="1">1</option>
+            <option value="0" selected>0</option>
+          </select>
+          <select name="i3j3">
+            <option selected>-</option>
+          </select>
+        </table>
+        <input type="submit" value="Send" />
+      </form>
+    </div>
+    <a href="/">На главную</a>
+    <h3>{{restorations.restoration1.name}} ---- номер - 1</h3>
+    <h3>{{restorations.restoration2.name}} ---- номер - 2</h3>
+    <h3>{{restorations.restoration3.name}} ---- номер - 3</h3>
+    <h3>{{restorations.restoration4.name}} ---- номер - 4</h3>
   </body>
 </html>

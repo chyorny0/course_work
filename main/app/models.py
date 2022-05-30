@@ -1,6 +1,5 @@
 from django.db import models
 
-# Create your models here.
 
 class Car(models.Model):
     name = models.CharField(max_length=50)
@@ -16,7 +15,16 @@ class Restoration(models.Model):
     total_price = models.FloatField()
 
 class Range(models.Model):
+    resultnumber = models.IntegerField()
     result = models.IntegerField()
+
+class RangeVoteAdd(models.Model):
+    restoration1 = models.ForeignKey(Restoration, related_name='restoration1', on_delete=models.PROTECT)
+    restoration2 = models.ForeignKey(Restoration, related_name='restoration2', on_delete=models.PROTECT)
+    restoration3 = models.ForeignKey(Restoration, related_name='restoration3', on_delete=models.PROTECT)
+    restoration4 = models.ForeignKey(Restoration, related_name='restoration4', on_delete=models.PROTECT)
+    
+
 
 
 

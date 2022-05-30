@@ -2,15 +2,51 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>Перечень товаров</title>
+    <title>Перечень записей о машинах</title>
     <style> 
     *{
       background-color: #e5e5e5;
       margin: 2% 7%;
     }
-    a:last-of-type{
-      margin-left: 70%
-    }
+  a{
+      padding: 5px;
+      margin-left: 10%;
+      background-color: #DDA0DD;
+      color: black;
+      text-decoration: none;
+      border: 1px solid black;
+      border-radius: 10px;
+}
+  a:hover{
+    background-color: #EE82EE;
+  }
+  a:active{
+      background-color: #FF00FF;
+  }
+  a:last-of-type{
+      margin-left: 83%
+  }
+  input[type="submit"]{
+    margin-left: 14%;
+    background-color: #DDA0DD;
+  }
+  input:hover{
+      background-color: #EE82EE;
+  }
+  input:active{
+      background-color: #FF00FF;
+  }
+  h2{
+    background-color: #DDA0DD;
+    padding-left: 31%;
+  }
+  h3{
+    width: 170px;
+    background-color: #DDA0DD;
+    margin-left: 35%;
+    padding-left: 10%;
+    border-radius: 10px;
+  }
     </style>
   </head>
   <body>
@@ -26,7 +62,7 @@
       <input type="submit" value="Send" />
     </form>
     <h3>{{search}}</h3>
-    <h2>Перечень товаров</h2>
+    <h2>Перечень машин</h2>
     {% for car in cars %}
     <h3>{{car.name}}</h3>
     <h3>{{search}}</h3>

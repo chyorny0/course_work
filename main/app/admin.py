@@ -1,8 +1,8 @@
 from django.contrib import admin
 from .models import Car
-from .models import Restoration
+from .models import Restoration, RangeVoteAdd
 
-# Register your models here.
 
 admin.site.register(Car)
 admin.site.register(Restoration)
+admin.site.register(RangeVoteAdd)
